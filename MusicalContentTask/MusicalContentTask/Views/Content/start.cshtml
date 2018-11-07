@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "start";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Make The changes you want</h2>
+
+<div style="margin-left:450px; margin-top:150px; width:200000px;">
+    @Html.ActionLink("Upload Music", "uploadcontent", "Content", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("My Music", "uploadedcontent", "Content", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("All Music", "alluploadedcontent", "Content", null, new { @class = "btn btn-primary" })
+   
+</div>
+<br/>
+<br/>
+<h3 style="margin-left:270px">You can upload music or display your uploaded music </h3>
+

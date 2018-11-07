@@ -1,0 +1,63 @@
+﻿@model MusicalContentTask.Models.Content
+
+@{
+    ViewBag.Title = "UploadForm";
+    int id = (int)ViewBag.id;
+}
+
+
+           
+<h2>Upload Your Music</h2>
+<br />
+@Html.ActionLink("Back !", "start", "Content", null, null)
+@using (Html.BeginForm("savecontent", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.songname)
+        @Html.TextBoxFor(m => m.songname, new { @class = "form-control" })
+     
+        
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.singername)
+        @Html.TextBoxFor(m => m.singername, new { @class = "form-control" })
+ 
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.albumname)
+        @Html.TextBoxFor(m => m.albumname, new { @class = "form-control" })
+ 
+    </div>
+    <br/>
+    <br/>
+    <div class="form-group">
+        @Html.LabelFor(m =>m.contentimg , htmlAttributes: new { @class = "control-label col-md-2" })
+       
+        <input type="file" name="songimg" accept="image/* " required placeholder="Ente img" oninvalid="this.setCustomValidity('You must upload the song picture !')" oninput="    this.setCustomValidity('')" />
+    
+    </div>
+    <div class="form-group" >
+        @Html.LabelFor(m => m.idimg, htmlAttributes: new { @class = "control-label col-md-2" })
+  
+        <input type="file" name="idimg" accept="image/*" required />
+      
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.contentfile, htmlAttributes: new { @class = "control-label col-md-2" })
+    
+        <input type="file" name="songmp3" accept="audio/* " required />
+       
+    </div>
+    <br />
+    <br />
+    @Html.HiddenFor(m => m.Registereduserid , new { Value =@id })
+   <button type="submit" class="btn btn-primary">Save</button>
+    @Html.ViewData["Message"]
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

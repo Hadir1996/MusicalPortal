@@ -1,0 +1,66 @@
+﻿@model IEnumerable<MusicalContentTask.Models.Content>
+
+@{
+    ViewBag.Title = "uploadedcontent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Your Uploaded Music</h2>
+<br/>
+@Html.ActionLink("Back !", "start", "Content", null, null)
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.songname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.singername)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.albumname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contentfile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contentimg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idimg)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.songname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.singername)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.albumname)
+        </td>
+        <td>
+            <audio src="@Url.Content(item.contentfile)" type="audio/mp3" controls="controls" />
+
+        </td>
+        <td>
+          
+           
+            <img src="@Url.Content(item.contentimg)" style="width:200px; height:inherit;" />
+                
+        <td>
+            <img src="@Url.Content(item.idimg)" style="width:200px; height:inherit;" />
+           
+        </td>
+       
+    </tr>
+}
+
+</table>
+
+
